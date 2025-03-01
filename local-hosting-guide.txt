@@ -1,0 +1,95 @@
+# Guide to Local Hosting with Your Domain
+
+This guide will help you set up your computer as a web server and connect your GoDaddy domain to it.
+
+## Prerequisites
+- Your GoDaddy domain
+- A computer that can stay on whenever you want the website to be accessible
+- Access to your home router for configuration
+- A stable internet connection
+
+## Step 1: Set Up a Web Server on Your Computer
+
+### Option A: Using XAMPP (Easiest)
+1. Download and install XAMPP from https://www.apachefriends.org/
+2. During installation, select at least Apache (the web server component)
+3. Start XAMPP Control Panel and click "Start" next to Apache
+4. Navigate to the XAMPP installation folder (usually C:\xampp on Windows)
+5. Find the "htdocs" folder
+6. Create a new folder inside htdocs for your website (e.g., "school")
+7. Copy all your website files (index.html, styles.css, script.js, and Images folder) into this folder
+8. Test locally by opening a browser and going to http://localhost/school
+
+### Option B: Using Python (Simple Alternative)
+1. Open a command prompt or terminal
+2. Navigate to your website folder containing index.html
+3. Run this command:
+   - For Python 3: `python -m http.server 80`
+   - For Python 2: `python -m SimpleHTTPServer 80`
+4. Test locally by opening a browser and going to http://localhost
+
+## Step 2: Set Up Dynamic DNS (Because Your Home IP Changes)
+
+1. Create a free account with a Dynamic DNS service like No-IP (https://www.noip.com/)
+2. Create a hostname (e.g., zphsgudikandula.ddns.net)
+3. Download and install their Dynamic Update Client on your computer
+4. This client will update your hostname whenever your home IP address changes
+5. Keep this client running on your computer
+
+## Step 3: Configure Port Forwarding on Your Router
+
+1. Find your router's IP address (usually 192.168.0.1 or 192.168.1.1)
+2. Open a browser and enter this IP address
+3. Log in to your router (check the router manual for default credentials)
+4. Find "Port Forwarding" settings (might be under Advanced Settings)
+5. Create a new port forwarding rule:
+   - External Port: 80 (standard HTTP port)
+   - Internal Port: 80
+   - Internal IP Address: Your computer's local IP address (find this by typing "ipconfig" in command prompt on Windows or "ifconfig" in terminal on Mac/Linux)
+   - Protocol: TCP or Both (TCP/UDP)
+6. Save the settings
+
+## Step 4: Configure Your GoDaddy Domain
+
+1. Log in to your GoDaddy account
+2. Go to My Products > Domains and find your domain
+3. Click on "DNS" or "Manage DNS"
+4. Look for the "A" record (might be called "A (Host)")
+5. Set it to point to your Dynamic DNS hostname:
+   - If using No-IP, you'll create a CNAME record:
+     - Type: CNAME
+     - Name: @ (or www)
+     - Value: your-hostname.ddns.net (e.g., zphsgudikandula.ddns.net)
+     - TTL: 1 Hour
+6. Save the changes
+
+## Step 5: Test Your Setup
+
+1. Make sure your web server is running
+2. Make sure your Dynamic DNS client is running
+3. Try accessing your website using your domain name
+4. Note that DNS changes can take up to 48 hours to propagate, but usually happen within a few hours
+
+## Important Limitations and Considerations
+
+1. **Reliability**: Your website will only be accessible when your computer is on and your internet is working.
+
+2. **Speed**: Home internet connections typically have slower upload speeds than professional hosting, which can make your website load slowly for visitors.
+
+3. **ISP Restrictions**: Many Internet Service Providers block port 80 on residential connections or prohibit hosting websites in their terms of service. If your website doesn't work, check if your ISP allows hosting.
+
+4. **Security Risks**: Opening your computer to the internet creates security vulnerabilities. Make sure your computer has up-to-date security software.
+
+5. **Bandwidth Limitations**: Most home internet plans have monthly data caps or fair usage policies. If your website gets a lot of traffic, you might exceed these limits.
+
+## Alternative: Redirect Domain to GitHub Pages (Easier and More Reliable)
+
+If you encounter issues with local hosting, consider using GitHub Pages for hosting (it's free) and pointing your GoDaddy domain to it:
+
+1. Create a GitHub account and repository
+2. Upload your website files to the repository
+3. Enable GitHub Pages in the repository settings
+4. In GoDaddy, set up your domain to point to GitHub Pages servers
+5. GitHub has documentation on how to set this up with custom domains
+
+This gives you the benefits of professional hosting while still using your own domain.

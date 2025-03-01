@@ -1,0 +1,69 @@
+# GoDaddy Website Hosting and File Upload Guide
+
+## Check if You Have Hosting
+
+1. First, you need to make sure you have purchased hosting along with your domain. A domain is just the web address (like zphsgudikandula.com), but you also need hosting space to store your website files.
+
+2. Log in to your GoDaddy account at https://www.godaddy.com/
+
+3. After logging in, look for "My Products" or "Web Hosting" in your dashboard.
+
+4. If you don't see hosting listed, you'll need to purchase it. Click on "Web Hosting" and select a plan that suits your needs (the Basic plan should be sufficient for your school website).
+
+## Accessing File Manager and Uploading Files
+
+If you already have hosting with GoDaddy, follow these steps to upload your website files:
+
+1. Log in to your GoDaddy account
+
+2. Go to "My Products" and find your hosting plan
+
+3. Click on "Manage" next to your hosting plan
+
+4. This will take you to the hosting control panel. Look for "File Manager" or "cPanel" (depending on your hosting type)
+
+5. If you see cPanel, click on it and then find the "File Manager" icon
+
+6. In File Manager, navigate to the "public_html" or "www" folder - this is where your website files should go
+
+7. Click the "Upload" button at the top of the page
+
+8. Select all your website files (index.html, styles.css, script.js) and upload them
+
+9. Create a folder called "Images" and upload all your image and video files to this folder
+
+## Alternative: Using FTP to Upload Files
+
+If you prefer using FTP (File Transfer Protocol), which can be easier for uploading multiple files:
+
+1. From your GoDaddy hosting dashboard, look for "FTP Information" or "FTP Accounts"
+
+2. Create an FTP account or note down your existing FTP credentials (hostname, username, password)
+
+3. Download and install an FTP client like FileZilla (free) from https://filezilla-project.org/
+
+4. Open FileZilla and enter your FTP credentials to connect to your hosting
+
+5. Navigate to the "public_html" or "www" folder on the right side (remote server)
+
+6. On the left side (your computer), navigate to where your website files are stored
+
+7. Select all your website files and drag them to the right side to upload
+
+## Testing Your Website
+
+After uploading all files:
+
+1. Visit your domain name in a web browser (e.g., yourdomain.com)
+
+2. If you see a "Coming Soon" page or GoDaddy placeholder, you may need to wait a few hours for DNS propagation, or check if there's a setting in your hosting dashboard to make your site live
+
+## Getting Help from GoDaddy
+
+If you're still having trouble:
+
+1. GoDaddy has 24/7 customer support. Call their support line or use their live chat.
+
+2. Ask specifically about "how to upload website files to my hosting account"
+
+3. They can guide you through the process or even help you set up your website remotely

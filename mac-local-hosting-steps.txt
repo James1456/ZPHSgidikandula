@@ -1,0 +1,129 @@
+# Setting Up Local Hosting on Your Mac
+
+I'll guide you through the process of setting up your Mac as a web server and connecting it with your GoDaddy domain.
+
+## Step 1: Set Up a Web Server on Your Mac
+
+Macs come with Python pre-installed, which makes it easy to create a simple web server:
+
+1. Open Terminal (you can find it in Applications > Utilities > Terminal)
+
+2. Navigate to your website folder using the `cd` command. For example:
+   ```
+   cd /Users/harshavardhanreddy/Desktop/Zphs\ gudikandula
+   ```
+
+3. Start the Python web server with this command:
+   ```
+   sudo python3 -m http.server 80
+   ```
+   
+4. You'll be asked for your Mac password (this is needed because port 80 requires administrator privileges)
+
+5. You should see a message like "Serving HTTP on 0.0.0.0 port 80"
+
+6. Test your local server by opening Safari and going to http://localhost
+
+## Step 2: Find Your Mac's Local IP Address
+
+1. Open System Preferences (Apple menu > System Preferences)
+
+2. Click on "Network"
+
+3. Select your active connection (Wi-Fi or Ethernet) on the left
+
+4. Your IP address will be displayed on the right side (it will look something like 192.168.1.x)
+
+5. Make note of this IP address - you'll need it for port forwarding
+
+## Step 3: Set Up Dynamic DNS
+
+1. Go to https://www.noip.com/ and create a free account
+
+2. Create a hostname (e.g., zphsgudikandula.ddns.net)
+
+3. Download the No-IP Dynamic Update Client for Mac from their website
+
+4. Install and run the client, then log in with your No-IP account
+
+5. Select your hostname and keep the client running
+
+## Step 4: Configure Port Forwarding on Your Router
+
+1. Find your router's IP address:
+   - Open Terminal
+   - Type `netstat -nr | grep default` and press Enter
+   - The IP address next to "default" is your router's address (usually 192.168.0.1 or 192.168.1.1)
+
+2. Open Safari and enter your router's IP address
+
+3. Log in to your router (check your router manual for default credentials)
+
+4. Find "Port Forwarding" settings (might be under Advanced Settings)
+
+5. Create a new port forwarding rule:
+   - External Port: 80
+   - Internal Port: 80
+   - Internal IP Address: Your Mac's local IP address (from Step 2)
+   - Protocol: TCP or Both (TCP/UDP)
+
+6. Save the settings
+
+## Step 5: Configure Your GoDaddy Domain
+
+1. Log in to your GoDaddy account
+
+2. Go to My Products > Domains and find your domain
+
+3. Click on "DNS" or "Manage DNS"
+
+4. Look for the "A" record (might be called "A (Host)")
+
+5. Set it to point to your Dynamic DNS hostname:
+   - If using No-IP, you'll create a CNAME record:
+     - Type: CNAME
+     - Name: @ (or www)
+     - Value: your-hostname.ddns.net (e.g., zphsgudikandula.ddns.net)
+     - TTL: 1 Hour
+
+6. Save the changes
+
+## Step 6: Keep Your Server Running
+
+1. Your Mac needs to stay on for the website to be accessible
+
+2. To prevent your Mac from sleeping, go to:
+   - System Preferences > Energy Saver
+   - Set "Turn display off after" to a higher value or "Never"
+   - Uncheck "Put hard disks to sleep when possible"
+   - Check "Prevent computer from sleeping automatically when the display is off"
+
+## Troubleshooting
+
+If your website isn't accessible from the internet:
+
+1. Make sure your Python server is running (the Terminal window should be open)
+
+2. Check if your ISP blocks port 80 (many do). If so, try using port 8080 instead:
+   ```
+   sudo python3 -m http.server 8080
+   ```
+   And update your port forwarding rule to forward external port 80 to internal port 8080
+
+3. Test your port forwarding at https://www.yougetsignal.com/tools/open-ports/ (enter your public IP and port 80)
+
+4. Some routers have additional firewall settings that might block incoming connections
+
+5. DNS changes can take up to 48 hours to propagate, but usually happen within a few hours
+
+## Alternative: Using MAMP (More User-Friendly)
+
+If you prefer a graphical interface instead of Terminal commands:
+
+1. Download and install MAMP (free version) from https://www.mamp.info/
+
+2. Start MAMP and click "Start Servers"
+
+3. Click "Preferences" > "Web Server" and set the document root to your website folder
+
+4. The rest of the steps (Dynamic DNS, port forwarding, etc.) remain the same

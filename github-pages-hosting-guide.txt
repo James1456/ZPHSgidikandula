@@ -1,0 +1,116 @@
+# Hosting Your School Website on GitHub Pages (Free)
+
+GitHub Pages is a free hosting service that's perfect for static websites like yours. Here's how to set it up:
+
+## Step 1: Create a GitHub Account
+
+1. Go to https://github.com/
+2. Click "Sign up" and follow the instructions to create an account
+3. Verify your email address when prompted
+
+## Step 2: Create a New Repository
+
+1. After logging in, click the "+" icon in the top-right corner
+2. Select "New repository"
+3. Name your repository "zphs-gudikandula" (or any name you prefer)
+4. Make sure it's set to "Public"
+5. Click "Create repository"
+
+## Step 3: Upload Your Website Files
+
+1. In your new repository, click "uploading an existing file" link
+2. Drag and drop all your website files:
+   - index.html
+   - styles.css
+   - script.js
+   - Images folder (you'll need to upload the contents of this folder separately)
+3. Click "Commit changes" at the bottom
+
+## Step 4: Upload Images
+
+1. In your repository, click "Add file" > "Create new file"
+2. Type "Images/" in the name field (this creates an Images folder)
+3. Type "placeholder.txt" after "Images/" (we need to create a file to create the folder)
+4. Add some text like "Images folder" in the content area
+5. Click "Commit new file"
+6. Navigate to the Images folder you just created
+7. Click "Add file" > "Upload files"
+8. Upload all your image files
+9. Click "Commit changes"
+
+## Step 5: Enable GitHub Pages
+
+1. In your repository, click "Settings" (tab at the top)
+2. Scroll down to the "GitHub Pages" section (or click "Pages" in the left sidebar)
+3. Under "Source", select "main" branch
+4. Click "Save"
+5. Wait a moment, then refresh the page
+6. You'll see a message saying "Your site is published at https://yourusername.github.io/zphs-gudikandula/"
+
+## Step 6: Connect Your GoDaddy Domain
+
+1. In your GitHub repository, go to Settings > Pages
+2. Under "Custom domain", enter your domain name (e.g., zphsgudikandula.com)
+3. Click "Save"
+4. Check the "Enforce HTTPS" box (if available)
+
+5. Now, log in to your GoDaddy account
+6. Go to My Products > Domains and find your domain
+7. Click "DNS" or "Manage DNS"
+8. You need to add these records:
+
+   For the apex domain (yourdomain.com):
+   - Type: A
+   - Name: @
+   - Value: 185.199.108.153
+   - TTL: 1 Hour
+
+   - Type: A
+   - Name: @
+   - Value: 185.199.109.153
+   - TTL: 1 Hour
+
+   - Type: A
+   - Name: @
+   - Value: 185.199.110.153
+   - TTL: 1 Hour
+
+   - Type: A
+   - Name: @
+   - Value: 185.199.111.153
+   - TTL: 1 Hour
+
+   For the www subdomain:
+   - Type: CNAME
+   - Name: www
+   - Value: yourusername.github.io
+   - TTL: 1 Hour
+
+9. Save the changes
+
+## Step 7: Wait for DNS Propagation
+
+1. DNS changes can take up to 48 hours to propagate
+2. You can check if it's working by visiting your domain
+3. If you see a GitHub Pages error about the domain not being configured correctly, wait a bit longer
+
+## Benefits of GitHub Pages
+
+- Completely free hosting
+- Fast global content delivery network
+- Automatic HTTPS encryption
+- No need to keep your computer on
+- Professional reliability (99.9%+ uptime)
+- Easy to update (just upload new files to GitHub)
+
+## Updating Your Website in the Future
+
+When you want to make changes to your website:
+
+1. Go to your GitHub repository
+2. Navigate to the file you want to edit
+3. Click the pencil icon to edit
+4. Make your changes
+5. Click "Commit changes"
+
+For more complex changes, you can download GitHub Desktop application which makes it easier to manage your files.
